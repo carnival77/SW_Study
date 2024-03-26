@@ -12,7 +12,7 @@ ans=0
 #  우,상,좌,하 - 공이 날아가는 방향
 dx=[0,-1,0,1]
 dy=[1,0,-1,0]
-ㄴ
+
 def inBoard(nx,ny):
     if 0<=nx<n and 0<=ny<n:
         return True
@@ -58,21 +58,21 @@ def init():
                 bfs(no,x,y)
                 no+=1
 
-def getNext(kind,x,y,no):
-
-    if kind==1:
-        for k in range(4):
-            nx, ny = x + dx[k], y + dy[k]
-            if not inBoard(nx, ny): continue
-            if b[nx][ny] == no and 3 <= a[nx][ny] <= 4:
-                return [nx,ny]
-
-    elif kind==3:
-        for k in range(4):
-            nx, ny = x + dx[k], y + dy[k]
-            if not inBoard(nx, ny): continue
-            if b[nx][ny]==no and a[nx][ny]==2:
-                return [nx,ny]
+# def getNext(kind,x,y,no):
+#
+#     if kind==1:
+#         for k in range(4):
+#             nx, ny = x + dx[k], y + dy[k]
+#             if not inBoard(nx, ny): continue
+#             if b[nx][ny] == no and 3 <= a[nx][ny] <= 4:
+#                 return [nx,ny]
+#
+#     elif kind==3:
+#         for k in range(4):
+#             nx, ny = x + dx[k], y + dy[k]
+#             if not inBoard(nx, ny): continue
+#             if b[nx][ny]==no and a[nx][ny]==2:
+#                 return [nx,ny]
 
 def move():
     global teams,b,a
@@ -81,32 +81,49 @@ def move():
         team=teams[no]
         if team is None: continue
 
-        new_team=deque()
-
-        head=team[0]
-        tail=team[-1]
-        hx,hy=head
-        tx,ty=tail
-
-        # 머리, 꼬리 다음 이동 위치 구하기
-        nhx,nhy=getNext(1,hx,hy,no)
-        ntx, nty = getNext(3, tx, ty, no)
-
-        # 중간(나머지) 이동
-        for x,y in list(team)[:-2]:
-            new_team.append([x,y])
-
-        # 꼬리 이동
-        a[ntx][nty]=3
+        tx,ty=team.pop()
         a[tx][ty]=4
-        new_team.append([ntx,nty])
+        b[tx][ty]=0
+        new_tx,new_ty=team[-1]
+        a[new_tx][new_ty]=3
+        b[new_tx][new_ty]=no
+        sx,sy=team[0]
+        a[sx][sy]=2
+        for k in range(4):
+            nx,ny=sx+dx[k],sy+dy[k]
+            if not inBoard(nx,ny):continue
+            if a[nx][ny]==4:
+                team.appendleft([nx,ny])
+                a[nx][ny]=1
+                b[nx][ny]=no
+                break
 
-        # 머리 이동
-        a[nhx][nhy]=1
-        a[hx][hy]=2
-        new_team.appendleft([nhx,nhy])
-
-        teams[no]=new_team
+        # new_team=deque()
+        #
+        # head=team[0]
+        # tail=team[-1]
+        # hx,hy=head
+        # tx,ty=tail
+        #
+        # # 머리, 꼬리 다음 이동 위치 구하기
+        # nhx,nhy=getNext(1,hx,hy,no)
+        # ntx, nty = getNext(3, tx, ty, no)
+        #
+        # # 중간(나머지) 이동
+        # for x,y in list(team)[:-2]:
+        #     new_team.append([x,y])
+        #
+        # # 꼬리 이동
+        # a[ntx][nty]=3
+        # a[tx][ty]=4
+        # new_team.append([ntx,nty])
+        #
+        # # 머리 이동
+        # a[nhx][nhy]=1
+        # a[hx][hy]=2
+        # new_team.appendleft([nhx,nhy])
+        #
+        # teams[no]=new_team
 
 def throw(round):
 
