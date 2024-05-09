@@ -17,3 +17,12 @@
 - **20240615**
   - 2017하_오후 [돌아가는 팔각 의자](https://www.codetree.ai/training-field/frequent-problems/problems/rounding-eight-angle/description?page=3&pageSize=20)
   - 2017하_오후 [연산자 배치하기](https://www.codetree.ai/training-field/frequent-problems/problems/arrange-operator/description?page=3&pageSize=20)
+- **20240616**
+  - 2018상_오전 [디버깅](https://www.codetree.ai/training-field/frequent-problems/problems/debugging?page=3&pageSize=20)
+  - 2018상_오전 [이상한 체스](https://www.codetree.ai/training-field/frequent-problems/problems/odd-chess?page=3&pageSize=20)
+- **2024622**
+  - 2018상_오후 [드래곤 커브](https://www.codetree.ai/training-field/frequent-problems/problems/dragon-curve?page=3&pageSize=20)
+  - 2018상_오후 [병원 거리 최소화하기](https://www.codetree.ai/training-field/frequent-problems/problems/min-of-hospital-distance?page=3&pageSize=20)
+- **20240623**
+  - 2018하_오전 [토스트 계란틀](https://www.codetree.ai/training-field/frequent-problems/problems/toast-eggmold?page=3&pageSize=20)
+  - 2018하_오전 [바이러스 실험](https://www.codetree.ai/training-field/frequent-problems/problems/virus-experiment?page=3&pageSize=20)
