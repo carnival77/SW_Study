@@ -5,7 +5,7 @@ dx=[-1,0,1,0]
 dy=[0,-1,0,1]
 
 n,m=map(int,input().split())
-a=[list(map(int,input().split())) for _ in range(n)] # 불 = 2, 방화벽 = 1, 빈 칸=0
+a=[list(map(int,input().split())) for _ in range(n)] # 번진 불 = 3, 원래 불 = 2, 방화벽 = 1, 빈 칸=0
 
 cand=[]
 
@@ -34,7 +34,7 @@ def bfs(a,sx,sy):
             if not inBoard(nx,ny) or a[nx][ny]!=0:
                 continue
             q.append((nx,ny))
-            a[nx][ny]=2
+            a[nx][ny]=3
     return a
 
 def process(a):
