@@ -17,11 +17,13 @@ def inBoard(nx,ny):
         return True
     return False
 
-b=[]
+b,c=[],[]
 for x in range(n):
     for y in range(m):
         if a[x][y]==0:
             b.append([x,y])
+        if a[x][y]==2:
+            c.append([x,y])
 
 def bfs(a,sx,sy):
     q=deque()
@@ -40,10 +42,8 @@ def bfs(a,sx,sy):
 def process(a):
     res=0
 
-    for x in range(n):
-        for y in range(m):
-            if a[x][y]==2:
-                a=bfs(a,x,y)
+    for x,y in c:
+        a=bfs(a,x,y)
     for x in range(n):
         for y in range(m):
             if a[x][y]==0:
