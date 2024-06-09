@@ -74,11 +74,9 @@ tuple<int, int, int> getLeftPosAndDirection(int row, int col, int direction) {
 }
 
 void driveCar(int startRow, int startCol, int startDirection) {
-
 	int tmpRow = startRow;
 	int tmpCol = startCol;
 	int tmpDirection = startDirection;
-
 	int count4 = 4;
 
 	while (1) {
@@ -146,8 +144,8 @@ int main(void) {
 	driveCar(startRow, startCol, startDirection);
 
 	int answer = 0;
-	for (auto v1 : visited) {
-		for (bool isVisited : v1) {
+	for (auto v : visited) {
+		for (bool isVisited : v) {
 			if (isVisited) answer++;
 		}
 	}

@@ -26,7 +26,7 @@ bool isNotSameBlock(int beforeRow, int beforeCol, int row, int col) {
 }
 
 int bfs_to_find_max(int startRow, int startCol) {
-	queue<tuple<int, int, int, int, int, int>>q;
+	queue<tuple<int, int, int, int, int, int>>q; //look 34 line
 	int maxSum = INT_MIN;
 
 	q.push({ -1, -1, startRow, startCol, 1, board[startRow][startCol] });
@@ -39,7 +39,6 @@ int bfs_to_find_max(int startRow, int startCol) {
 			continue;
 		}
 
-
 		for (int i = 0; i < 4; i++) {
 			int nextRow = row + dRow[i];
 			int nextCol = col + dCol[i];
@@ -48,22 +47,19 @@ int bfs_to_find_max(int startRow, int startCol) {
 			}
 		}
 
-
 		if (cnt == 2) {
-			if (startRow == 1 && startCol == 0 && row == 1 && col == 1) {
-				int here = 3;
-			}
-
 			for (int i = 0; i < 4; i++) {
 				int nextRow1 = row + dRow[i];
 				int nextCol1 = col + dCol[i];
+
 				if (!isValidRange(nextRow1, nextCol1)) continue;
 				if (!isNotSameBlock(beforeRow, beforeCol, nextRow1, nextCol1) || nextRow1 < startRow) continue;
+
 				for (int j = 0; j < 4; j++) {
 					int nextRow2 = row + dRow[j];
 					int nextCol2 = col + dCol[j];
-					if (!isValidRange(nextRow2, nextCol2)) continue;
-					if (nextRow2 < startRow) continue;
+
+					if (!isValidRange(nextRow2, nextCol2) || nextRow2 < startRow) continue;
 
 					if (isNotSameBlock(beforeRow, beforeCol, nextRow2, nextCol2) && isNotSameBlock(nextRow1, nextCol1, nextRow2, nextCol2)) {
 						maxSum = max(maxSum, sum + board[nextRow1][nextCol1] + board[nextRow2][nextCol2]);
@@ -71,6 +67,7 @@ int bfs_to_find_max(int startRow, int startCol) {
 				}
 			}
 		}
+
 	}
 
 	return maxSum;
