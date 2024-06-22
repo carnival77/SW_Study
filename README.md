@@ -14,3 +14,6 @@
 - **20240609**
   - 2017하_오전 [조삼모사](https://www.codetree.ai/training-field/frequent-problems/problems/three-at-dawn-and-four-at-dusk/description?page=3&pageSize=20)
   - 2017하_오전 [보도블럭](https://www.codetree.ai/training-field/frequent-problems/problems/crosswalk/description?page=3&pageSize=20)
+- **20240615**
+  - 2017하_오후 [돌아가는 팔각 의자](https://www.codetree.ai/training-field/frequent-problems/problems/rounding-eight-angle/description?page=3&pageSize=20)
+  - 2017하_오후 [연산자 배치하기](https://www.codetree.ai/training-field/frequent-problems/problems/arrange-operator/description?page=3&pageSize=20)
