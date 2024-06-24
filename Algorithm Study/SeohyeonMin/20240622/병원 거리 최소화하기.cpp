@@ -18,32 +18,6 @@ int brd[MAXN][MAXN];
 vector<V> ps;
 vector<V> hs;
 
-int pos[MAXM];
-int ans = INF;
-void dfs(int posi, int hi) {
-	if (posi == m) {
-		// 합 계산
-		int sum = 0;
-		for (int i = 0; i < ps.size(); i++) {
-			int diff_min = INF;
-			for (int j = 0; j < m; j++) {
-				int diff = abs(ps[i].r - hs[pos[j]].r) + abs(ps[i].c - hs[pos[j]].c);
-				diff_min = min(diff, diff_min);
-			}
-			sum += diff_min;
-		}
-		
-		ans = min(ans, sum);
-		return;
-	}
-	if (hi >= hs.size()) return;
-
-	for (int i = posi; i < hs.size(); i++) {
-		pos[posi] = i;
-		dfs(posi + 1, i + 1);
-	}
-}
-
 int main() {
 	scanf("%d %d", &n, &m);
 
@@ -55,6 +29,28 @@ int main() {
 		}
 	}
 
-	dfs(0, 0);
+	int ans = INF;
+	for (int state = 1; state < (1 << hs.size()); state++) {
+		vector<V> hs_selected;
+		for (int i = 0; i < hs.size(); i++) {
+			if ((state >> i) & 1) {
+				hs_selected.push_back(hs[i]);
+			}
+		}
+		
+		if (hs_selected.size() != m) continue;
+		int sum = 0;
+		for (V p : ps) {
+			int diff_min = INF;
+			for (V h : hs_selected) {
+				int diff = abs(p.r - h.r) + abs(p.c - h.c);
+				diff_min = min(diff_min, diff);
+			}
+			sum += diff_min;
+		}
+
+		ans = min(ans, sum);
+	}
+	
 	printf("%d", ans);
 }
