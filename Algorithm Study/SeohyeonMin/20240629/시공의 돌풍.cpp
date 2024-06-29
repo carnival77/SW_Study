@@ -23,7 +23,6 @@ struct Typoon {
 int n, m;
 int t;
 int brd[MAXN][MAXM];
-int brd_tmp[MAXN][MAXM];
 int dirt_diff[MAXN][MAXM];
 Typoon typoon;
 
