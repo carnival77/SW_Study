@@ -1,3 +1,8 @@
+/*
+* 전투 로봇
+* 시간복잡도: O(n^4)
+* 공간복잡도: O(n^2)
+*/
 #include <cstdio>
 #include <algorithm>
 #include <queue>
@@ -43,6 +48,7 @@ Crd choose_crd_by_rule(Crd crd_monster1, Crd crd_monster2) {
 	return list_monster[0];
 }
 
+// O(n^2)
 V find_closest_monster(Robot& robot) {
 	Crd target = Crd(-1, -1);
 	int dis_min = INF;
@@ -84,6 +90,7 @@ V find_closest_monster(Robot& robot) {
 	return V(target.r, target.c, dis_min);
 }
 
+// O(n*n * n*n) = O(n^4)
 int solve(Robot& robot) {
 	int ret = 0;
 
@@ -110,7 +117,7 @@ int solve(Robot& robot) {
 	return ret;
 }
 
-
+// O(n^4)
 int main() {
 	Robot robot;
 

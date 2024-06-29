@@ -1,3 +1,7 @@
+/*
+* 시공의 돌풍
+* 시간복잡도: O(t*n*m)
+*/
 #include <cstdio>
 #include <memory.h>
 
@@ -38,7 +42,7 @@ void spread(int r, int c) {
 	}
 
 	int amount = brd[r][c] / 5;
-	dirt_diff[r][c] -= amount*available_direction;
+	dirt_diff[r][c] -= amount * available_direction;
 	for (int d = 0; d < 4; d++) {
 		int nr = r + dr[d];
 		int nc = c + dc[d];
@@ -77,7 +81,7 @@ void clean_upper(Crd upper) {
 
 	int r_cur = upper.r, c_cur = upper.c;
 	int d_cur = 0;
-	int remain = 2 * (upper.r+1) + 2 * m - 4 - 1;
+	int remain = 2 * (upper.r + 1) + 2 * m - 4 - 1;
 
 	int dirt_tmp = 0;
 	while (remain > 0) {
@@ -87,13 +91,13 @@ void clean_upper(Crd upper) {
 			nr = r_cur - dr[d_cur];
 			nc = c_cur - dc[d_cur];
 			d_cur++;
-			
+
 			nr = r_cur + dr[d_cur];
 			nc = c_cur + dc[d_cur];
 		}
 		int dirt_next = brd[nr][nc];
 		brd[nr][nc] = dirt_tmp;
-		
+
 		dirt_tmp = dirt_next;
 		r_cur = nr, c_cur = nc;
 		remain--;
@@ -152,6 +156,7 @@ int main() {
 		}
 	}
 
+	// O(t * (n*m + (n+m))) ~= O(t*n*m)
 	for (int i = 0; i < t; i++) {
 		// 먼지 확산
 		dirt_spread();
