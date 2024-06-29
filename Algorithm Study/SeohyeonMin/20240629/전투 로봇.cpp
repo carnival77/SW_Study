@@ -62,6 +62,7 @@ V find_closest_monster(Robot& robot) {
 			int nr = cur.r + dr[d];
 			int nc = cur.c + dc[d];
 			if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
+			if (visited[nr][nc]) continue;
 			if (brd[nr][nc] > robot.level) continue;
 
 			Crd crd_next = Crd(nr, nc);
