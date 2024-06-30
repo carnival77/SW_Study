@@ -22,15 +22,15 @@ const int dc[] = { 0, 0, 1, -1 };
 
 int n, m, k;
 V brd[MAXN][MAXM];
-V new_brd[MAXN][MAXM] = {};
+V new_brd[MAXN][MAXM];
 
 // 채취할 곰팡이 탐색
 // O(n)
-V find_pange_and_erase(int col) {
-	V ret = V();
+int find_proper_pange_and_erase(int col) {
+	int ret = 0;
 	for (int r = 0; r < n; r++) {
 		if (brd[r][col].b != 0) {
-			ret = brd[r][col];
+			ret = brd[r][col].b;
 
 			// 채취한 곰팡이 제거
 			brd[r][col] = V();
@@ -47,8 +47,8 @@ int reverse_direction(int d) {
 	return 2;
 }
 
-// 크기가 큰 곰팡이가 잡아먹음
-V choose(V v1, V v2) {
+// 크기 큰 곰팡이 반환
+V choose_bigger(V v1, V v2) {
 	return v1.b > v2.b ? v1 : v2;
 }
 
@@ -67,13 +67,13 @@ void move_for_second() {
 					nr %= 2 * (n - 1);
 					int nd = x.d;
 					if (nr <= n - 1) {
-						new_brd[nr][nc] = choose(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
+						new_brd[nr][nc] = choose_bigger(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
 					}
 					else {
 						nr = 2 * (n - 1) - nr;
 						int nd = reverse_direction(x.d);
 
-						new_brd[nr][nc] = choose(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
+						new_brd[nr][nc] = choose_bigger(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
 					}
 				}
 				// 좌우
@@ -82,13 +82,13 @@ void move_for_second() {
 					nc %= 2 * (m - 1);
 					int nd = x.d;
 					if (nc <= m - 1) {
-						new_brd[nr][nc] = choose(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
+						new_brd[nr][nc] = choose_bigger(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
 					}
 					else {
 						nc = 2 * (m - 1) - nc;
 						int nd = reverse_direction(x.d);
 
-						new_brd[nr][nc] = choose(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
+						new_brd[nr][nc] = choose_bigger(new_brd[nr][nc], V(nr, nc, x.s, nd, x.b));
 					}
 				}
 			}
@@ -129,8 +129,7 @@ int main() {
 	// 열 순서대로 순회
 	for (int col = 0; col < m; col++) {
 		// 곰팡이 채취
-		V target = find_pange_and_erase(col);
-		sum += target.b;
+		sum += find_proper_pange_and_erase(col);
 
 		// 곰팡이 이동
 		move_for_second();
