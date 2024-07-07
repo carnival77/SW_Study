@@ -4,9 +4,15 @@
 using namespace std;
 
 const int MAXN = 51, MAXM = 51;
+// 상 좌 하 우 순서
+const int dr[] = { -1, 0, 1, 0 };
+const int dc[] = { 0, -1, 0, 1 };
+
 int n, m, q;
 vector<int> brd[MAXN];
+bool visited[MAXN][MAXM];
 
+// O(m)
 void rotate_circle(int tx, int d, int k) {
 	vector<int> new_brd;
 	// 반시계
@@ -29,9 +35,6 @@ bool is_in_range(int r, int c) {
 	return true;
 }
 
-int dr[] = { -1, 0, 1, 0 };
-int dc[] = { 0, -1, 0, 1 };
-bool visited[MAXN][MAXM];
 int dfs(int cr, int cc, int num) {
 	if (brd[cr][cc] == 0 || visited[cr][cc]) return 0;
 	brd[cr][cc] = 0;
@@ -89,6 +92,7 @@ int main() {
 		// x배수의 원판을 d방향으로 k칸 회전
 		// d=0: 시계, d=1: 반시계
 		for (int tx = x; tx <= n; tx += x) {
+			// O(m)
 			rotate_circle(tx, d, k);
 		}
 
@@ -108,6 +112,7 @@ int main() {
 				}
 			}
 		}
+
 		if (!is_erased) {
 			normalize();
 		}
