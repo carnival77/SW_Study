@@ -85,11 +85,7 @@ bool do_move(int hidx) {
 		}
 	}
 	update_crd(nx, ny);
-
-	if (!(h.x == nx && h.y == ny)) {
-		printf("not same\n");
-
-	}
+	
 	return state[h.x][h.y].size() >= 4;
 }
 
