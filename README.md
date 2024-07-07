@@ -32,3 +32,6 @@
 - **20240706**
   - 2019상_오후2번 [바이러스 백신](https://www.codetree.ai/training-field/frequent-problems/problems/vaccine-for-virus/description?page=3&pageSize=20)
   - 2019하_오전1번 [종전](https://www.codetree.ai/training-field/frequent-problems/problems/war-finish/description?page=2&pageSize=20)
+- **20240707**
+  - 2019하_오전2번 [이상한 윷놀이](https://www.codetree.ai/training-field/frequent-problems/problems/odd-woodstick-game/description?page=2&pageSize=20)
+  - 2019하_오후1번 [이상한 다트 게임](https://www.codetree.ai/training-field/frequent-problems/problems/odd-dart-game/description?page=2&pageSize=20)
