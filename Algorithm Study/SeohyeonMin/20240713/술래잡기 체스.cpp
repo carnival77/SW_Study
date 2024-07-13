@@ -31,20 +31,14 @@ int find_thief_idx(int r, int c, vector<V>& ts) {
 void move_thieves(V& chaser, vector<V>& ts) {
 	for (int i = 0; i < ts.size(); i++) {
 		int d_st = ts[i].d;
-		int nd = ts[i].d;
-		while (true) {
+
+		for (int d = 0; d < 7; d++) {
+			int nd = (ts[i].d + d) % 8;
 			int nr = ts[i].r + dr[nd];
 			int nc = ts[i].c + dc[nd];
 			// 격자 밖이거나, 술래가 있는 경우
 			if (!is_in_range(nr, nc)
 				|| (nr == chaser.r && nc == chaser.c)) {
-				nd++;
-				nd %= 8;
-
-				// 이동 불가한 경우 (는 있을수가 없긴 함)
-				if (nd == d_st) {
-					break;
-				}
 				continue;
 			}
 
@@ -71,15 +65,13 @@ void dfs(V& chaser, vector<V>& ts, int score) {
 	move_thieves(chaser, ts);
 
 	vector<int> cands;
-	int r = chaser.r, c = chaser.c, d = chaser.d;
-	while (true) {
-		int nr = r + dr[d];
-		int nc = c + dc[d];
+	for (int step = 1; step < max(ROW_SIZE, COL_SIZE); step++) {
+		int nr = chaser.r + dr[chaser.d] * step;
+		int nc = chaser.c + dc[chaser.d] * step;
 		if (!is_in_range(nr, nc)) break;
 
-		r = nr, c = nc;
-		int ti = find_thief_idx(r, c, ts);
-		if (ti!= -1) {
+		int ti = find_thief_idx(nr, nc, ts);
+		if (ti != -1) {
 			cands.push_back(ti);
 		}
 	}
@@ -91,7 +83,7 @@ void dfs(V& chaser, vector<V>& ts, int score) {
 
 	for (int ti : cands) {
 		V cand = ts[ti];
-		
+
 		V chaser_next = V(cand.r, cand.c, cand.d, chaser.num);
 		vector<V> ts_next = ts;
 		ts_next.erase(ts_next.begin() + ti);
@@ -120,7 +112,7 @@ int main() {
 	int ti = find_thief_idx(0, 0, ts);
 	int score_next = ts[ti].num;
 	chaser = V(0, 0, ts[ti].d, NUM_CHASER);
-	
+
 	vector<V> ts_next = ts;
 	ts_next.erase(ts_next.begin() + ti);
 
