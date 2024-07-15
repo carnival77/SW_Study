@@ -35,3 +35,9 @@
 - **20240707**
   - 2019하_오전2번 [이상한 윷놀이](https://www.codetree.ai/training-field/frequent-problems/problems/odd-woodstick-game/description?page=2&pageSize=20)
   - 2019하_오후1번 [이상한 다트 게임](https://www.codetree.ai/training-field/frequent-problems/problems/odd-dart-game/description?page=2&pageSize=20)
+- **20240713**
+  - 2020상_오전1번 [2차원 테트리스](https://www.codetree.ai/training-field/frequent-problems/problems/tetris-2d/description?page=2&pageSize=20)
+  - 2020상_오전2번 [술래잡기 체스](https://www.codetree.ai/training-field/frequent-problems/problems/odd-chess2/description?page=2&pageSize=20)
+- **20240714**
+  - 2020상_오후1번 [승자독식 모노폴리](https://www.codetree.ai/training-field/frequent-problems/problems/odd-monopoly/description?page=2&pageSize=20)
+  - 2020상_오후2번 [자율주행 전기차](https://www.codetree.ai/training-field/frequent-problems/problems/autonomous-electric-car/description?page=2&pageSize=20)
