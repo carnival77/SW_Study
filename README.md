@@ -44,3 +44,6 @@
 - **20240720**
   - 2020하_오전1번 [불안한 무빙워크](https://www.codetree.ai/training-field/frequent-problems/problems/unstable-moving-walk/description?page=2&pageSize=20)
   - 2020하_오전2번 [원자 충](https://www.codetree.ai/training-field/frequent-problems/problems/atom-collision/description?page=2&pageSize=20)
+- **20240721**
+  - 2020하_오후1번 [청소는 즐거워](https://www.codetree.ai/training-field/frequent-problems/problems/cleaning-is-joyful/description?page=2&pageSize=20)
+  - 2020하_오후2번 [회전하는 빙하](https://www.codetree.ai/training-field/frequent-problems/problems/rotating-glacier/description?page=2&pageSize=20)
