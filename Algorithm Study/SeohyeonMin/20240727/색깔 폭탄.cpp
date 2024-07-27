@@ -69,67 +69,72 @@ int find_and_erase_bomb_group() {
 	// vector<B> bombs의 크기로 비교하므로 g는 초기화 안해줘도 런타임에러 발생x
 	G g;
 
+	vector<V> colors[MAXM + 1];
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (1 <= brd[i][j] && brd[i][j] <= m) {
+				colors[brd[i][j]].push_back(V(i, j));
+			}
+		}
+	}
+
 	// 빨간색 + color 혹은 color로만 이루어진 폭탄 그룹 탐색
 	for (int color = 1; color <= m; color++) {
 		// (i, j)를 포함하는 가장 큰 폭탄 그룹 탐색
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if (brd[i][j] != color) continue;
-				memset(visited, false, sizeof(visited));
-				vector<B> bombs;
+		for (V& crd : colors[color]) {
+			memset(visited, false, sizeof(visited));
+			vector<B> bombs;
 
-				queue<V> que;
-				que.push(V(i, j));
-				
-				while (!que.empty()) {
-					V cur = que.front();
-					que.pop();
-					if (visited[cur.r][cur.c]) continue;
-					visited[cur.r][cur.c] = true;
-					bombs.push_back(B(brd[cur.r][cur.c], cur.r, cur.c));
+			queue<V> que;
+			que.push(V(crd.r, crd.c));
 
-					for (int d = 0; d < 4; d++) {
-						int nr = cur.r + dr[d];
-						int nc = cur.c + dc[d];
-						if (!is_in_range(nr, nc)) continue;
-						if (visited[nr][nc]) continue;
-						if (brd[nr][nc] == EMPTY) continue;
-						if (brd[nr][nc] != RED && brd[nr][nc] != color) continue;
-					
-						que.push(V(nr, nc));
-					}
+			while (!que.empty()) {
+				V cur = que.front();
+				que.pop();
+				if (visited[cur.r][cur.c]) continue;
+				visited[cur.r][cur.c] = true;
+				bombs.push_back(B(brd[cur.r][cur.c], cur.r, cur.c));
+
+				for (int d = 0; d < 4; d++) {
+					int nr = cur.r + dr[d];
+					int nc = cur.c + dc[d];
+					if (!is_in_range(nr, nc)) continue;
+					if (visited[nr][nc]) continue;
+					if (brd[nr][nc] == EMPTY) continue;
+					if (brd[nr][nc] != RED && brd[nr][nc] != color) continue;
+
+					que.push(V(nr, nc));
 				}
+			}
 
-				// 폭탄 개수는 2개 이상이어야 함
-				if (bombs.size() < 2) {
-					continue;
-				}
+			// 폭탄 개수는 2개 이상이어야 함
+			if (bombs.size() < 2) {
+				continue;
+			}
 
-				G g_cur = G(bombs);
+			G g_cur = G(bombs);
 
-				// 크기가 큰 폭탄 묶음 선택
-				if (g_cur.bombs.size() > g.bombs.size()) {
+			// 크기가 큰 폭탄 묶음 선택
+			if (g_cur.bombs.size() > g.bombs.size()) {
+				g = g_cur;
+			}
+			else if (g_cur.bombs.size() == g.bombs.size()) {
+				// 1. 빨간색 폭탄이 가장 적게 포함된 것
+				if (g_cur.cnt_red < g.cnt_red) {
 					g = g_cur;
 				}
-				else if (g_cur.bombs.size() == g.bombs.size()) {
-					// 1. 빨간색 폭탄이 가장 적게 포함된 것
-					if (g_cur.cnt_red < g.cnt_red) {
+				else if (g_cur.cnt_red == g.cnt_red) {
+					// 2. 행 기준 가장 큰 칸 선택
+					if (g_cur.r > g.r) {
 						g = g_cur;
 					}
-					else if (g_cur.cnt_red == g.cnt_red) {
-						// 2. 행 기준 가장 큰 칸 선택
-						if (g_cur.r > g.r) {
+					else if (g_cur.r == g.r) {
+						// 3. 열 기준 가장 작은 칸 선택
+						if (g_cur.c < g.c) {
 							g = g_cur;
-						}
-						else if (g_cur.r == g.r) {
-							// 3. 열 기준 가장 작은 칸 선택
-							if (g_cur.c < g.c) {
-								g = g_cur;
-							}
 						}
 					}
 				}
-
 			}
 		}
 	}
@@ -150,7 +155,7 @@ void apply_gravity() {
 			if (brd[r][c] != STONE && brd[r][c] != EMPTY) {
 				tmp.push_back(brd[r][c]);
 			}
-			
+
 			if (brd[r][c] == STONE) {
 				new_brd[r][c] = STONE;
 
@@ -203,7 +208,7 @@ int main() {
 		2.1. 모두 같은 색의 폭탄이거나
 		2.2. 빨간색 폭탄을 포함하여 2개의 색깔로만 이루어진 폭탄이어야 함
 	*/
-	
+
 	int score = 0;
 	bool is_end = false;
 	while (!is_end) {
@@ -217,10 +222,10 @@ int main() {
 
 		// 90도 회전
 		rotate_counter_clockwise();
-		
+
 		// 중력 작용
 		apply_gravity();
 	}
-	
+
 	printf("%d", score);
 }
