@@ -109,13 +109,7 @@ int find_and_erase_bomb_group() {
 					que.push(V(nr, nc));
 				}
 			}
-
-			for (B& b : bombs) {
-				if (b.color == RED) {
-					visited[b.r][b.c] = false;
-				}
-			}
-
+			
 			// 폭탄 개수는 2개 이상이어야 함
 			if (bombs.size() < 2) {
 				continue;
