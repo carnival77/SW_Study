@@ -64,7 +64,7 @@ bool is_in_range(int r, int c) {
 	return true;
 }
 
-// O(n^4 * m)
+// O(n^2 * m)
 int find_and_erase_bomb_group() {
 	// vector<B> bombs의 크기로 비교하므로 g는 초기화 안해줘도 런타임에러 발생x
 	G g;
@@ -80,9 +80,12 @@ int find_and_erase_bomb_group() {
 
 	// 빨간색 + color 혹은 color로만 이루어진 폭탄 그룹 탐색
 	for (int color = 1; color <= m; color++) {
+		memset(visited, false, sizeof(visited));
+
 		// (i, j)를 포함하는 가장 큰 폭탄 그룹 탐색
 		for (V& crd : colors[color]) {
-			memset(visited, false, sizeof(visited));
+			if (visited[crd.r][crd.c]) continue;
+
 			vector<B> bombs;
 
 			queue<V> que;
@@ -104,6 +107,12 @@ int find_and_erase_bomb_group() {
 					if (brd[nr][nc] != RED && brd[nr][nc] != color) continue;
 
 					que.push(V(nr, nc));
+				}
+			}
+
+			for (B& b : bombs) {
+				if (b.color == RED) {
+					visited[b.r][b.c] = false;
 				}
 			}
 
