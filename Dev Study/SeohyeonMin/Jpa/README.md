@@ -12,5 +12,4 @@
 
 ### [QueryDSL 실전 예제](https://heiler.notion.site/QueryDSL-13f5a4b966264dfe9f86674b7e89859f?pvs=4)
 
-## CI/CD
-### [Github Actions 소개](https://heiler.notion.site/Gitub-Actions-24587eff33bb44a1b4905951d06ad494?pvs=4)
+### [JPQL 문법 중급](https://heiler.notion.site/JPQL-2cd12b7ca4c34394887c51b2215f2707?pvs=4)
