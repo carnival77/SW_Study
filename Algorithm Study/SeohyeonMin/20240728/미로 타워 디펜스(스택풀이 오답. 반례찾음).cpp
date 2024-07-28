@@ -78,9 +78,6 @@ int remove_consecutive(int cnt) {
 	// stack
 	vector<T> st;
 	for (int i = 0; i < snail.size(); i++) {
-		if (i == 100) {
-			int  yy = 1;
-		}
 		if (st.empty()) {
 			st.push_back(T(snail[i], 1));
 			continue;
