@@ -41,3 +41,12 @@
 - **20240714**
   - 2020상_오후1번 [승자독식 모노폴리](https://www.codetree.ai/training-field/frequent-problems/problems/odd-monopoly/description?page=2&pageSize=20)
   - 2020상_오후2번 [자율주행 전기차](https://www.codetree.ai/training-field/frequent-problems/problems/autonomous-electric-car/description?page=2&pageSize=20)
+- **20240720**
+  - 2020하_오전1번 [불안한 무빙워크](https://www.codetree.ai/training-field/frequent-problems/problems/unstable-moving-walk/description?page=2&pageSize=20)
+  - 2020하_오전2번 [원자 충](https://www.codetree.ai/training-field/frequent-problems/problems/atom-collision/description?page=2&pageSize=20)
+- **20240721**
+  - 2020하_오후1번 [청소는 즐거워](https://www.codetree.ai/training-field/frequent-problems/problems/cleaning-is-joyful/description?page=2&pageSize=20)
+  - 2020하_오후2번 [회전하는 빙하](https://www.codetree.ai/training-field/frequent-problems/problems/rotating-glacier/description?page=2&pageSize=20)
+- **20240727**
+  - 2021상_오전1번 [놀이기구 탑승](https://www.codetree.ai/training-field/frequent-problems/problems/go-on-the-rides/description?page=2&pageSize=20)
+  - 2021상_오전2번 [색깔 폭탄](https://www.codetree.ai/training-field/frequent-problems/problems/colored-bomb/submissions?page=2&pageSize=20)
