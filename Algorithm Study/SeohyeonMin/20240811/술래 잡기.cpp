@@ -3,6 +3,13 @@
 #include <algorithm>
 using namespace std;
 
+enum Direction {
+	DOWN = 0,
+	RIGHT,
+	UP,
+	LEFT
+};
+
 // 좌표
 struct V {
 	int r, c;
@@ -20,7 +27,6 @@ struct T {
 
 const int MAXN = 99 + 1;
 // 하 우 상 좌 순
-const int DOWN = 0, RIGHT = 1, UP = 2, LEFT = 3;
 const int dr[] = { 1, 0, -1, 0 };
 const int dc[] = { 0, 1, 0, -1 };
 
@@ -38,7 +44,7 @@ vector<V> snail;
 // 술래 정보 (snail 기반 위치 정보)
 int police_idx;	// snail 인덱스
 int police_add;	// +1, -1
-int police_d;	// 하우상좌
+enum Direction police_d;	// 하우상좌
 
 bool is_in_range(int r, int c) {
 	return !(r < 0 || r >= n || c < 0 || c >= n);
