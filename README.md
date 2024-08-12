@@ -57,7 +57,7 @@
   - 2021하_오전1번 [냉방 시스템](https://www.codetree.ai/training-field/frequent-problems/problems/cooling-system/description?page=2&pageSize=20)
   - 2021하_오전2번 [정육면체 한번 더 굴리기](https://www.codetree.ai/training-field/frequent-problems/problems/cube-rounding-again?page=2&pageSize=20)
 - **20240810**
-  - 2021하_오후1번 [팩맨] (https://www.codetree.ai/training-field/frequent-problems/problems/pacman/description?page=2&pageSize=20)
+  - 2021하_오후1번 [팩맨](https://www.codetree.ai/training-field/frequent-problems/problems/pacman/description?page=2&pageSize=20)
   - 2021하_오후2번 [Sam의 피자학교](https://www.codetree.ai/training-field/frequent-problems/problems/sam-pizza-school/description?page=2&pageSize=20)
 - **20240811**
   - 2022상_오전1번 [술래잡기](https://www.codetree.ai/training-field/frequent-problems/problems/hide-and-seek?page=1&pageSize=20)
