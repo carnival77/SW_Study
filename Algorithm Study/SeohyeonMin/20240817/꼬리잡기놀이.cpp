@@ -18,7 +18,7 @@ enum Direction {
 typedef struct V {
 	int r, c;
 	V() {}
-	V(int _r, int _c): r(_r), c(_c) {}
+	V(int _r, int _c) : r(_r), c(_c) {}
 };
 
 // Team
@@ -85,7 +85,7 @@ void move_one() {
 	}
 }
 
-int shout_ball(int round) {
+int shoot_ball(int round) {
 	int d_ball = round % (4 * n) / n;
 	// 시작 위치 결정
 	int sr = -1, sc = -1;
@@ -128,7 +128,7 @@ int shout_ball(int round) {
 	// 공 받은 경우
 	// 머리 변경
 	T& t = teams[tnum[tr][tc]];
-	t.head = t.calc_index(t.head, t.cnt-1);
+	t.head = t.calc_index(t.head, t.cnt - 1);
 
 	// 방향 변경
 	t.direction *= -1;
@@ -211,7 +211,7 @@ int main() {
 		// 한 칸 이동
 		move_one();
 
-		int x = shout_ball(round);
+		int x = shoot_ball(round);
 		score += x;
 	}
 	printf("%d", score);
