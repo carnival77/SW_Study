@@ -62,3 +62,6 @@
 - **20240811**
   - 2022상_오전1번 [술래잡기](https://www.codetree.ai/training-field/frequent-problems/problems/hide-and-seek?page=1&pageSize=20)
   - 2022상_오전2번 [예술성](https://www.codetree.ai/training-field/frequent-problems/problems/artistry/description?page=1&pageSize=20)
+- **20240817**
+  - 2022상_오후1번 [꼬리잡기놀이](https://www.codetree.ai/training-field/frequent-problems/problems/tail-catch-play/description?page=4&pageSize=5)
+  - 2022상_오후2번 [나무박멸](https://www.codetree.ai/training-field/frequent-problems/problems/tree-kill-all/description?page=4&pageSize=5)
