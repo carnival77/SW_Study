@@ -22,6 +22,7 @@ typedef struct P {
 	}
 };
 
+
 // belt
 typedef struct B {
 	int front_product_id;
@@ -107,11 +108,23 @@ ll put_down_product(int w_max) {
 		}
 		// 뒤로 이동
 		else {
-			P product = P(get_bnum(product_info[front_product_id]), product_info[front_product_id].id, product_info[front_product_id].w);
-			belts[bnum].pop_front(product_info);
+			if (belts[bnum].size == 1) continue;
 
-			product_info[product.id] = product;
-			belts[bnum].push_back(product.id, product_info);
+			int old_front = belts[bnum].front_product_id;
+			int new_front = product_info[belts[bnum].front_product_id].nxt;
+
+			int old_back = belts[bnum].back_product_id;
+			int new_back = old_front;
+
+			product_info[new_back].nxt = -1;
+
+			product_info[new_back].prev = old_back;
+			product_info[old_back].nxt = new_back;
+			
+			product_info[new_front].prev = -1;
+
+			belts[bnum].front_product_id = new_front;
+			belts[bnum].back_product_id = new_back;
 		}
 	}
 	return sum;
