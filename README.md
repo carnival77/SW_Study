@@ -65,3 +65,6 @@
 - **20240817**
   - 2022상_오후1번 [꼬리잡기놀이](https://www.codetree.ai/training-field/frequent-problems/problems/tail-catch-play/description?page=4&pageSize=5)
   - 2022상_오후2번 [나무박멸](https://www.codetree.ai/training-field/frequent-problems/problems/tree-kill-all/description?page=4&pageSize=5)
+- **20240818**
+  - 2022하_오전1번 [싸움땅](https://www.codetree.ai/training-field/frequent-problems/problems/battle-ground/description?page=3&pageSize=5)
+  - 2022하_오전2번 [산타의 선물 공장](https://www.codetree.ai/training-field/frequent-problems/problems/santa-gift-factory/description?page=4&pageSize=5)
